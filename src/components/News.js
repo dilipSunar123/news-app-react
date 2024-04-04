@@ -60,7 +60,7 @@ export default class News extends Component {
   }
 
   async componentDidMount() {
-    console.log("cdm");
+    // console.log("cdm");
 
     this.setState({
       page: this.state.page + 1

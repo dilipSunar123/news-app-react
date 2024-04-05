@@ -48,8 +48,8 @@ export default class News extends Component {
   //   }
   // ]
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     console.log("This is a constructor from News Component");
     this.state = {
       // articles: this.articles,
@@ -57,6 +57,11 @@ export default class News extends Component {
       loading: false,
       page: 1
     }
+    document.title = "News Monkey | " + this.capitalizeFirstLetter(this.props.category) + " | News";
+  }
+
+  capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   async componentDidMount() {
@@ -141,7 +146,7 @@ export default class News extends Component {
     console.log("render");
     return (
       <div className='container my-2'>
-        <h1 className='my-4'>Top Headlines</h1>
+        <h1 className='my-4'>Top Headlines - {this.capitalizeFirstLetter(this.props.category)}</h1>
         {this.state.loading && <Spinner />}
         <div className="row">
           {!this.state.loading && this.state.articles.map((element) => {
